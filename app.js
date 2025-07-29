@@ -24,6 +24,17 @@ const winning = [
   [3, 4, 5],
   [6, 7, 8],
 ];
+const checkAndHideInputs = () => {
+  const playerSetup = document.querySelector(".player-setup");
+  if (player1Input.value.trim() && player2Input.value.trim()) {
+    playerSetup.style.display = "none";
+  }
+};
+
+const showInputs = () => {
+  const playerSetup = document.querySelector(".player-setup");
+  playerSetup.style.display = "flex";
+};
 
 player1Input.addEventListener("input", () => {
   player1Name = player1Input.value.trim() || "Player 1";
@@ -33,6 +44,23 @@ player1Input.addEventListener("input", () => {
 player2Input.addEventListener("input", () => {
   player2Name = player2Input.value.trim() || "Player 2";
   updateTurnDisplay();
+});
+player1Input.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    player1Input.blur();
+    if (player2Input.value.trim()) {
+      checkAndHideInputs();
+    } else {
+      player2Input.focus();
+    }
+  }
+});
+
+player2Input.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    player2Input.blur();
+    checkAndHideInputs();
+  }
 });
 
 const updateTurnDisplay = () => {
@@ -49,6 +77,7 @@ const resetGame = () => {
      enableBoxes();
      msgContainer.classList.add("hide");
      updateTurnDisplay();
+     showInputs();
 };
 
 const enableBoxes = () => {
@@ -127,5 +156,6 @@ function fireConfetti() {
   });
 }
 updateTurnDisplay();
+
 newGameBtn.addEventListener("click", resetGame);
 resetbtn.addEventListener("click", resetGame);
