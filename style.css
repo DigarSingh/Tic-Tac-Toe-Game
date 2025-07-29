@@ -95,3 +95,61 @@ h1 {
 .winning-box {
   animation: winFlash 1s infinite;
 }
+.player-setup {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+.player-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.player-input label {
+  font-weight: bold;
+  color: #333;
+  font-size: 1.1rem;
+}
+.player-input input {
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: center;
+  min-width: 200px;
+  transition: border-color 0.3s ease;
+}
+.player-input input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+.turn-display {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+.turn-display p {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+@media (max-width: 768px) {
+  .player-setup {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .player-input input {
+    min-width: 250px;
+  }
+}

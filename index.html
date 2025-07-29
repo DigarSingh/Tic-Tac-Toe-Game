@@ -13,6 +13,23 @@
     </div>
     <main>
       <h1>Tic Tac Toe</h1>
+      <div class="player-setup">
+        <div class="player-input">
+          <label for="player1">Player1 (O)</label>
+          <input type="text" id="player1" placeholder="Enter Player 1 Name: ">
+        </div>
+        <div class="player-input">
+          <div class="player2">
+            <label for="player2">Player 2 (X)</label>
+            <input type="text" id="player2" placeholder="Enter Player 2 Name: ">
+          </div>
+        </div>
+      </div>
+
+      <div class="turn-display">
+        <p id="current-turn">Player 1's Turn (O)</p>
+      </div>
+      
       <div class="container">
         <div class="game">
           <button class="box" aria-label="Tic Tac Toe cell"></button>

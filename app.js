@@ -3,10 +3,16 @@ let resetbtn = document.querySelector("#reset");
 let newGameBtn = document.querySelector("#new");
 let msg = document.querySelector("#win");
 let msgContainer = document.querySelector(".msg-container");
-let currplayer = "X";
+let player1Input = document.querySelector("#player1");
+let player2Input = document.querySelector("#player2");
+let currentTurnDisplay = document.querySelector("#current-turn");
 
 let turnO = true;
 let count = 0;
+
+// Default player names
+let player1Name = "Player 1";
+let player2Name = "Player 2";
 
 const winning = [
   [0, 1, 2],
@@ -19,16 +25,37 @@ const winning = [
   [6, 7, 8],
 ];
 
+player1Input.addEventListener("input", () => {
+  player1Name = player1Input.value.trim() || "Player 1";
+  updateTurnDisplay();
+});
+
+player2Input.addEventListener("input", () => {
+  player2Name = player2Input.value.trim() || "Player 2";
+  updateTurnDisplay();
+});
+
+const updateTurnDisplay = () => {
+  if (turnO) {
+    currentTurnDisplay.innerText = `${player1Name}'s Turn (O)`;
+  } else {
+    currentTurnDisplay.innerText = `${player2Name}'s Turn (X)`;
+  }
+};
+
 const resetGame = () => {
      turnO = true;
+     count = 0;
      enableBoxes();
      msgContainer.classList.add("hide");
+     updateTurnDisplay();
 };
 
 const enableBoxes = () => {
      for (let box of boxes){
           box.disabled = false;
           box.innerText = "";
+          box.classList.remove("x", "o");
      }
 };
 
@@ -53,21 +80,25 @@ boxes.forEach((box) => {
       turnO = false;
     } else {
       box.innerText = "X";
-      box.classList.remove("o")
+      box.classList.remove("o");
       box.classList.add("x");
       turnO = true;
     }
     box.disabled = true;
     count++;
+    
     let isWinner = checkWinner();
     if(count === 9 && !isWinner){
      gameDraw();
+    } else if (!isWinner) {
+      updateTurnDisplay();
     }
   });
 });
 
 const showWinnner = (winner) => {
-  msg.innerText = `Congratulations, Winner is ${winner}`;
+  let winnerName = winner === "O" ? player1Name : player2Name;
+  msg.innerText = `Congratulations, ${winnerName} wins!`;
   msgContainer.classList.remove("hide");
   disabledBoxes();
 };
@@ -95,6 +126,6 @@ function fireConfetti() {
     origin: { y: 0.6 }
   });
 }
-
+updateTurnDisplay();
 newGameBtn.addEventListener("click", resetGame);
 resetbtn.addEventListener("click", resetGame);
