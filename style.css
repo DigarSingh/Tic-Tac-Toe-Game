@@ -1,0 +1,97 @@
+* {
+     margin: 0;
+     padding: 0;
+}
+body {
+     background-color: #B5E2FA;
+     text-align: center;
+}
+h1 {
+     color: #EB5160;
+     font-size: 100px;
+     font-weight: bolder;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container {
+     height: 70vh;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     
+}
+.game {
+     height: 60vmin;
+     width: 60vmin;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: center;
+     align-items: center;
+     gap: 1.5vmin;
+
+}
+.box {
+     height: 18vmin;
+     width: 18vmin;
+     font-weight: bold;
+     border-radius: 1rem;
+     border: none;
+     box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+     font-size: 8vmin;
+     background-color: #F7A072;
+     color: #F9F7F3;
+     vertical-align: middle;
+     cursor: pointer;
+}
+.x {
+     color: red;
+}
+.o {
+     color: blue;
+}
+#reset{
+     padding: 1rem;
+     font-size: 1.25rem;
+     background-color: #EDDEA4;
+     border-radius: 1rem;
+     border: none;
+     font-weight: bolder;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+}
+#new{
+     padding: 1rem;
+     font-size: 1.25rem;
+     background-color: #EDDEA4;
+     border-radius: 1rem;
+     border: none;
+     font-weight: bolder;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+     box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+}
+#win{
+     color: #EB5160;
+     font-size: 100px;
+     font-weight: bolder;
+     font-size: 5vmax;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.msg-container {
+     height: 100vmin;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     gap: 4rem;
+}
+.hide{
+     display: none;
+}
+@keyframes winFlash {
+  0% { background-color: #90ee90; }
+  50% { background-color: #ffff00; } 
+  100% { background-color: #90ee90; }
+}
+
+.winning-box {
+  animation: winFlash 1s infinite;
+}
