@@ -63,7 +63,6 @@ This game works in all modern web browsers including:
 ## Future Enhancements
 
 - [ ] Score tracking
-- [ ] Player name customization
 - [ ] AI opponent
 - [ ] Sound effects
 - [ ] Different board sizes
